@@ -1,0 +1,77 @@
+---
+title: "Tourist Arrival"
+author: ""
+date: ""
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+# Data 
+
+The data source is from wikipedia : https://en.wikipedia.org/wiki/Tourism_in_Nepal
+
+# Load library
+
+```{r}
+library() # visualization
+library() # read data
+```
+
+# Read data
+
+```{r}
+arrivals <- read_csv("")
+```
+
+# Explore data
+
+```{r}
+head()
+```
+
+```{r}
+tail()
+```
+
+# Last 6 years Tourist Arrival
+
+```{r}
+ggplot(tail(arrivals), aes()) +
+  geom_bar(stat = "identity") +
+  labs(title = 'Yearly - Tourist Arrival in Nepal', 
+       x = 'Year', y = 'Tourist Arrival') 
+```
+
+
+
+# Yearly Tourist Arrival in Nepal
+
+```{r}
+p <- ggplot(arrivals, aes(year, tourist_arrival)) +
+  geom_line(color="") +
+  labs(title = 'Yearly - Tourist Arrival in Nepal', 
+       x = 'Year', y = 'Tourist Arrival') 
+
+p
+```
+
+# Set Limits of X-axis
+
+```{r}
+p + xlim(1995, 2020)
+```
+
+
+
+
+
+
+
+

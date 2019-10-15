@@ -1,0 +1,66 @@
+---
+title: "Onion Price"
+author: "Binod Jung Bogati"
+date: "10/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+# Load Library
+
+```{r}
+library()
+library()
+```
+
+# Load data
+
+Date source is http://kalimatimarket.gov.np
+
+```{r}
+onion_price <- read_csv("")
+```
+
+# Explore Data
+
+```{r}
+onion_price
+```
+
+# Convert Character into Date
+
+```{r}
+onion_price$date <-  mdy()
+```
+
+# Select Retail Price of Green Onion
+
+```{r}
+onion_green <- onion_price %>% 
+  filter(commodityName == "", 
+         PriceType == "")
+
+onion_green
+```
+# Green Onion Price Surge of Last 4 month
+
+```{r}
+onion_green %>% 
+  ggplot(aes()) +
+  geom_line() +
+  labs(title = "")
+```
+
+# Onion Dry Price Surge 
+
+```{r}
+
+```
+
