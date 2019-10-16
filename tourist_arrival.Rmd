@@ -20,42 +20,48 @@ The data source is from wikipedia : https://en.wikipedia.org/wiki/Tourism_in_Nep
 # Load library
 
 ```{r}
-library() # visualization
-library() # read data
+library(ggplot2) # visualization
+library(readr) # read data
 ```
 
 # Read data
 
 ```{r}
-arrivals <- read_csv("")
+arrivals <- read_csv("data/tourist_arrival.csv")
 ```
 
 # Explore data
 
 ```{r}
-head()
+head(arrivals)
 ```
 
 ```{r}
-tail()
+tail(arrivals)
 ```
 
-# Last 6 years Tourist Arrival
-
 ```{r}
-ggplot(tail(arrivals), aes()) +
+ggplot(arrivals, aes(x = year, y = tourist_arrival)) +
   geom_bar(stat = "identity") +
   labs(title = 'Yearly - Tourist Arrival in Nepal', 
        x = 'Year', y = 'Tourist Arrival') 
 ```
 
+# Last 6 years Tourist Arrival
 
+```{r}
+ggplot(tail(arrivals), aes(year, tourist_arrival)) +
+  geom_bar(stat = "identity") +
+  labs(title = 'Yearly - Tourist Arrival in Nepal', 
+       x = 'Year', y = 'Tourist Arrival') 
+```
 
 # Yearly Tourist Arrival in Nepal
 
 ```{r}
 p <- ggplot(arrivals, aes(year, tourist_arrival)) +
-  geom_line(color="") +
+  geom_line(color="blue") +
+  expand_limits(y = c(0, NA)) +
   labs(title = 'Yearly - Tourist Arrival in Nepal', 
        x = 'Year', y = 'Tourist Arrival') 
 
