@@ -12,12 +12,11 @@ knitr::opts_chunk$set(
 	warning = FALSE
 )
 ```
-
 # Load Library
 
 ```{r}
-library()
-library()
+library(tidyverse)
+library(lubridate)
 ```
 
 # Load data
@@ -25,7 +24,7 @@ library()
 Date source is http://kalimatimarket.gov.np
 
 ```{r}
-onion_price <- read_csv("")
+onion_price <- read_csv("data/onion_price.csv")
 ```
 
 # Explore Data
@@ -37,30 +36,36 @@ onion_price
 # Convert Character into Date
 
 ```{r}
-onion_price$date <-  mdy()
+onion_price$date <-  mdy(onion_price$date)
 ```
 
 # Select Retail Price of Green Onion
 
 ```{r}
 onion_green <- onion_price %>% 
-  filter(commodityName == "", 
-         PriceType == "")
+  filter(commodityName == "Onion Green", 
+         PriceType == "Retail")
 
 onion_green
 ```
+
 # Green Onion Price Surge of Last 4 month
 
 ```{r}
 onion_green %>% 
-  ggplot(aes()) +
-  geom_line() +
-  labs(title = "")
+  ggplot(aes(date, avg)) +
+  geom_line(color="green") +
+  labs(title = "Green Price surge of Last 4 month")
 ```
 
 # Onion Dry Price Surge 
 
 ```{r}
-
+onion_price %>% 
+  filter(commodityName == "Onion Dry", 
+         PriceType == "Retail") %>% 
+  ggplot(aes(date, avg)) +
+  geom_line(color="brown") +
+  labs(title = "Onion Dry Price surge of Last 4 month")
 ```
 
